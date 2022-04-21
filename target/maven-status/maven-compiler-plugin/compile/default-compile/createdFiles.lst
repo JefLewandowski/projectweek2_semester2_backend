@@ -1,0 +1,6 @@
+com\example\Product\Product.class
+com\example\Product\ScopeValidator.class
+com\example\Product\WebSecurityConfiguration.class
+com\example\Product\ProductApplication.class
+com\example\Product\ProductController.class
+com\example\Product\ProductRepository.class
