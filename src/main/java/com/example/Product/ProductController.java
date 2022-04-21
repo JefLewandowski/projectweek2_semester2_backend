@@ -18,7 +18,7 @@ public class ProductController {
     @Autowired
     private ProductRepository repository;
 
-    @GetMapping("/products")
+    @GetMapping("/products/findAll")
     public List<Product> getAllProducts() {
         return repository.findAll();
     }
@@ -52,6 +52,16 @@ public class ProductController {
         } else {
             return "Not Authorized to add product";
         }
+    }
+
+    @PostMapping(value = "/update")
+    public List<Product> update(@Valid @RequestBody Product product, @AuthenticationPrincipal Jwt accessToken) {
+        String scope = accessToken.getClaims().get("scope").toString();
+        Boolean partnerRole = scope.contains("partner");
+        if (partnerRole) {
+            repository.save(product);
+        }
+        return repository.findAll();
     }
 
     @GetMapping("products/searchOnInhabitants/{amt}")

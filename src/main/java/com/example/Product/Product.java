@@ -22,10 +22,10 @@ public class Product {
     @NotBlank
     private String thumbnail_url;
 
-    @Min(message = "Adults can not be less than 1", value = 1)
+    @Min(message = "Amount of adults can not be less than 1", value = 1)
     private int adults;
 
-    @Min(message = "Children can not be negative", value = 0)
+    @Min(message = "Amount of children can not be negative", value = 0)
     private int children;
 
     @Min(message = "Price can not be negative", value = 0)
@@ -37,6 +37,17 @@ public class Product {
     }
 
     public Product(String name, String description, String thumbnail_url, int adults, int children, double price, String extraInformation) {
+        this.name = name;
+        this.description = description;
+        this.thumbnail_url = thumbnail_url;
+        this.adults = adults;
+        this.children = children;
+        this.price = price;
+        this.extraInformation = extraInformation;
+    }
+
+    public Product(long id, String name, String description, String thumbnail_url, int adults, int children, double price, String extraInformation) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.thumbnail_url = thumbnail_url;
